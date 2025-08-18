@@ -7,11 +7,17 @@ from taxi.models import Manufacturer, Car, Driver
 class ManufacturerModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.manufacturer = Manufacturer.objects.create(name="Ford", country="USA")
+        cls.manufacturer = Manufacturer.objects.create(
+            name="Ford",
+            country="USA"
+        )
 
     def test_manufacturer_str(self):
         manufacturer = self.manufacturer
-        self.assertEqual(str(manufacturer), f"{manufacturer.name} {manufacturer.country}")
+        self.assertEqual(
+            str(manufacturer),
+            f"{manufacturer.name} {manufacturer.country}"
+        )
 
 
 class DriverModelTest(TestCase):
@@ -23,7 +29,10 @@ class DriverModelTest(TestCase):
             first_name="first",
             last_name="last"
         )
-        cls.manufacturer = Manufacturer.objects.create(name="Ford", country="USA")
+        cls.manufacturer = Manufacturer.objects.create(
+            name="Ford",
+            country="USA"
+        )
         cls.car = Car.objects.create(
             model="Focus",
             manufacturer=cls.manufacturer
@@ -39,7 +48,10 @@ class DriverModelTest(TestCase):
 
     def test_get_absolute_url(self):
         driver = self.driver
-        self.assertEqual(driver.get_absolute_url(), f"/drivers/{self.driver.pk}/")
+        self.assertEqual(
+            driver.get_absolute_url(),
+            f"/drivers/{self.driver.pk}/"
+        )
 
     def test_car_str(self):
         car = self.car
